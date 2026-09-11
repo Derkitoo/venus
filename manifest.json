@@ -1,0 +1,72 @@
+{
+  "id": "mars-venus-guide-pwa",
+  "name": "Mars & Vénus — Guide Relationnel",
+  "short_name": "Mars & Vénus",
+  "description": "Application guide relationnel interactive inspirée de l'œuvre du Dr John Gray (Les hommes viennent de Mars, les femmes viennent de Vénus).",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "background_color": "#0f172a",
+  "theme_color": "#ea580c",
+  "orientation": "any",
+  "lang": "fr-FR",
+  "dir": "ltr",
+  "categories": ["lifestyle", "education", "books", "health"],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "icons/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Décodeur Express",
+      "short_name": "Décodeur",
+      "description": "Traduire instantanément le langage de l'autre",
+      "url": "./index.html#tab-translator",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Baromètre des Cycles",
+      "short_name": "Cycles",
+      "description": "L'élastique masculin et la vague féminine",
+      "url": "./index.html#tab-cycles",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Lettre d'Amour en 5 étapes",
+      "short_name": "Lettre d'Amour",
+      "description": "Désamorcer la rancœur et reconnecter avec l'amour",
+      "url": "./index.html#tab-letter",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Compteur de Points",
+      "short_name": "Points",
+      "description": "Les petites attentions qui font la différence",
+      "url": "./index.html#tab-points",
+      "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

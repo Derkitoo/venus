@@ -1,0 +1,155 @@
+/* Styles personnalisés pour Mars & Vénus PWA (John Gray) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap');
+
+:root {
+  --mars-primary: #ea580c;
+  --mars-secondary: #c2410c;
+  --mars-light: #ffedd5;
+  --mars-accent: #38bdf8;
+  --venus-primary: #db2777;
+  --venus-secondary: #be185d;
+  --venus-light: #fce7f3;
+  --venus-accent: #a855f7;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+  overflow-x: hidden;
+  touch-action: manipulation;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding-bottom: calc(5rem + var(--safe-bottom));
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-bottom: 0;
+  }
+}
+
+.font-serif-title {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Gradients personnalisés */
+.mars-gradient {
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 50%, #c2410c 100%);
+}
+
+.venus-gradient {
+  background: linear-gradient(135deg, #ec4899 0%, #db2777 50%, #be185d 100%);
+}
+
+.mars-venus-gradient {
+  background: linear-gradient(135deg, #ea580c 0%, #8b5cf6 50%, #db2777 100%);
+}
+
+.soft-mars-bg {
+  background: linear-gradient(180deg, rgba(254, 243, 199, 0.4) 0%, rgba(255, 237, 213, 0.6) 100%);
+}
+
+.soft-venus-bg {
+  background: linear-gradient(180deg, rgba(252, 231, 243, 0.4) 0%, rgba(243, 232, 255, 0.6) 100%);
+}
+
+/* Transitions et animations */
+.transition-smooth {
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+@media (hover: hover) {
+  .card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.active-scale:active {
+  transform: scale(0.97);
+}
+
+/* Effets glassmorphism */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-color: rgba(226, 232, 240, 0.8);
+}
+
+/* Input touches optimisées pour mobile */
+input, textarea, select, button {
+  font-size: 16px; /* Empêche le zoom auto sur iPhone */
+}
+
+@media (min-width: 640px) {
+  input, textarea, select, button {
+    font-size: 14px;
+  }
+}
+
+/* Stylisation des scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Jauges tactiles optimisées */
+input[type="range"] {
+  accent-color: #db2777;
+  height: 8px;
+}
+
+.range-mars {
+  accent-color: #ea580c !important;
+}
+
+.range-venus {
+  accent-color: #db2777 !important;
+}
+
+/* Barre de navigation mobile inférieure (Bottom Navigation) */
+.mobile-bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  padding-bottom: var(--safe-bottom);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+/* Support du mode standalone PWA */
+@media all and (display-mode: standalone) {
+  header {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .pwa-install-banner {
+    display: none !important;
+  }
+}
