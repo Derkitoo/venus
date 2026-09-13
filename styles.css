@@ -136,12 +136,31 @@ input[type="range"] {
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 50;
-  padding-bottom: var(--safe-bottom);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  z-index: 45;
+  padding-bottom: max(6px, var(--safe-bottom));
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-top: 1px solid rgba(226, 232, 240, 0.9);
+}
+
+/* Cache la scrollbar native tout en préservant le défilement tactile fluide */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Panneau Coulissant Mobile (Bottom Sheet) */
+#mobile-more-sheet.sheet-open {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+#mobile-more-sheet.sheet-open #mobile-more-content {
+  transform: translateY(0) !important;
 }
 
 /* Support du mode standalone PWA */
@@ -153,3 +172,4 @@ input[type="range"] {
     display: none !important;
   }
 }
+

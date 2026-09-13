@@ -92,11 +92,37 @@ function initNetworkStatus() {
 }
 
 // 1. Navigation Unifiée (Desktop & Mobile)
+const MORE_TAB_INFO = {
+  'tab-support': { icon: '🤝', label: 'Soutien' },
+  'tab-letter': { icon: '💌', label: 'Lettre' },
+  'tab-simulator': { icon: '🛡️', label: 'Disputes' },
+  'tab-chapters': { icon: '📖', label: 'Livre' },
+};
+
+function openMobileMoreSheet() {
+  const sheet = document.getElementById('mobile-more-sheet');
+  if (sheet) {
+    sheet.classList.add('sheet-open');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMobileMoreSheet() {
+  const sheet = document.getElementById('mobile-more-sheet');
+  if (sheet) {
+    sheet.classList.remove('sheet-open');
+    document.body.style.overflow = '';
+  }
+}
+
 function switchTab(targetId) {
   const navBtns = document.querySelectorAll('.nav-btn');
   const mobileNavBtns = document.querySelectorAll('.mobile-nav-btn');
+  const mobilePillBtns = document.querySelectorAll('.mobile-pill-btn');
+  const sheetBtns = document.querySelectorAll('.sheet-module-btn');
   const sections = document.querySelectorAll('.tab-section');
 
+  // Desktop Navigation Buttons
   navBtns.forEach(b => {
     if (b.dataset.target === targetId) {
       b.classList.add('bg-rose-500', 'text-white', 'shadow-md', 'active-tab');
@@ -107,16 +133,65 @@ function switchTab(targetId) {
     }
   });
 
-  mobileNavBtns.forEach(b => {
-    if (b.dataset.target === targetId) {
-      b.classList.add('text-rose-600', 'font-bold');
-      b.classList.remove('text-slate-600');
+  // Mobile Top Swipeable Pills
+  mobilePillBtns.forEach(pill => {
+    if (pill.dataset.target === targetId) {
+      pill.classList.add('bg-rose-500', 'text-white', 'shadow-xs');
+      pill.classList.remove('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
+      try {
+        pill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      } catch (e) {}
     } else {
-      b.classList.remove('text-rose-600', 'font-bold');
-      b.classList.add('text-slate-600');
+      pill.classList.remove('bg-rose-500', 'text-white', 'shadow-xs');
+      pill.classList.add('bg-slate-100', 'text-slate-600', 'hover:bg-slate-200');
     }
   });
 
+  // Mobile Bottom 5-Button Dock
+  const moreToggleBtn = document.getElementById('mobile-more-toggle-btn');
+  const moreIcon = document.getElementById('mobile-more-btn-icon');
+  const moreLabel = document.getElementById('mobile-more-btn-label');
+  const moreDot = document.getElementById('mobile-more-btn-dot');
+  const isMoreTab = !!MORE_TAB_INFO[targetId];
+
+  mobileNavBtns.forEach(b => {
+    if (b === moreToggleBtn) {
+      if (isMoreTab) {
+        b.classList.add('text-rose-600', 'font-bold');
+        b.classList.remove('text-slate-500');
+        if (moreIcon) moreIcon.textContent = MORE_TAB_INFO[targetId].icon;
+        if (moreLabel) moreLabel.textContent = MORE_TAB_INFO[targetId].label;
+        if (moreDot) moreDot.classList.remove('hidden');
+      } else {
+        b.classList.remove('text-rose-600', 'font-bold');
+        b.classList.add('text-slate-500');
+        if (moreIcon) moreIcon.textContent = '☰';
+        if (moreLabel) moreLabel.textContent = 'Menu';
+        if (moreDot) moreDot.classList.add('hidden');
+      }
+    } else {
+      if (b.dataset.target === targetId) {
+        b.classList.add('text-rose-600', 'font-bold');
+        b.classList.remove('text-slate-500');
+      } else {
+        b.classList.remove('text-rose-600', 'font-bold');
+        b.classList.add('text-slate-500');
+      }
+    }
+  });
+
+  // Highlight in Sheet Drawer
+  sheetBtns.forEach(sb => {
+    if (sb.dataset.sheetTarget === targetId) {
+      sb.classList.add('border-rose-500', 'bg-rose-50/80', 'ring-2', 'ring-rose-200');
+      sb.classList.remove('border-slate-200/90', 'bg-slate-50/70');
+    } else {
+      sb.classList.remove('border-rose-500', 'bg-rose-50/80', 'ring-2', 'ring-rose-200');
+      sb.classList.add('border-slate-200/90', 'bg-slate-50/70');
+    }
+  });
+
+  // Switch sections
   sections.forEach(sec => {
     if (sec.id === targetId) {
       sec.classList.remove('hidden');
@@ -125,14 +200,57 @@ function switchTab(targetId) {
       sec.classList.add('hidden');
     }
   });
+
+  // Close sheet if open
+  closeMobileMoreSheet();
 }
 
 function initNavigation() {
+  // Desktop navigation
   document.querySelectorAll('.nav-btn').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.target));
   });
-  document.querySelectorAll('.mobile-nav-btn').forEach(btn => {
+
+  // Mobile top pill buttons
+  document.querySelectorAll('.mobile-pill-btn').forEach(btn => {
     btn.addEventListener('click', () => switchTab(btn.dataset.target));
+  });
+
+  // Mobile bottom dock buttons (only those with dataset.target)
+  document.querySelectorAll('.mobile-nav-btn[data-target]').forEach(btn => {
+    btn.addEventListener('click', () => switchTab(btn.dataset.target));
+  });
+
+  // Bottom Sheet Drawer Toggle & Close
+  const moreToggleBtn = document.getElementById('mobile-more-toggle-btn');
+  const moreCloseBtn = document.getElementById('mobile-more-close-btn');
+  const moreBackdrop = document.getElementById('mobile-more-backdrop');
+
+  if (moreToggleBtn) {
+    moreToggleBtn.addEventListener('click', () => {
+      const sheet = document.getElementById('mobile-more-sheet');
+      if (sheet && sheet.classList.contains('sheet-open')) {
+        closeMobileMoreSheet();
+      } else {
+        openMobileMoreSheet();
+      }
+    });
+  }
+
+  if (moreCloseBtn) {
+    moreCloseBtn.addEventListener('click', closeMobileMoreSheet);
+  }
+
+  if (moreBackdrop) {
+    moreBackdrop.addEventListener('click', closeMobileMoreSheet);
+  }
+
+  // Sheet module items
+  document.querySelectorAll('.sheet-module-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.dataset.sheetTarget;
+      if (target) switchTab(target);
+    });
   });
 }
 

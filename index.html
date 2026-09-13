@@ -143,6 +143,36 @@
         </button>
       </div>
     </nav>
+
+    <!-- Barre de Défilement Tactile des 8 Onglets sur Mobile (Swipeable Pills avec Momentum) -->
+    <nav aria-label="Onglets rapides mobile" class="md:hidden bg-white/95 border-t border-slate-200/80 overflow-x-auto no-scrollbar scroll-smooth">
+      <div id="mobile-top-pills" class="flex items-center gap-1.5 px-2.5 py-1.5 text-xs font-semibold whitespace-nowrap">
+        <button type="button" data-target="tab-overview" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-rose-500 text-white shadow-xs flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>🌟</span> Boussole
+        </button>
+        <button type="button" data-target="tab-translator" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>💬</span> Décodeur
+        </button>
+        <button type="button" data-target="tab-cycles" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>🔄</span> Cycles
+        </button>
+        <button type="button" data-target="tab-points" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>🎯</span> 101 Pts
+        </button>
+        <button type="button" data-target="tab-support" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>🤝</span> Soutien
+        </button>
+        <button type="button" data-target="tab-letter" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>💌</span> Lettre
+        </button>
+        <button type="button" data-target="tab-simulator" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>🛡️</span> Disputes
+        </button>
+        <button type="button" data-target="tab-chapters" class="mobile-pill-btn px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 hover:bg-slate-200 flex items-center gap-1 shrink-0 transition-smooth active-scale">
+          <span>📖</span> 13 Chapitres
+        </button>
+      </div>
+    </nav>
   </header>
 
   <!-- Contenu Principal -->
@@ -910,41 +940,122 @@
 
   </main>
 
-  <!-- Navigation Mobile Inférieure (Bottom Navigation Bar) -->
-  <nav aria-label="Navigation mobile" class="mobile-bottom-nav md:hidden flex items-center justify-around py-2 px-1 text-[10px] font-semibold text-slate-600 shadow-lg">
-    <button type="button" data-target="tab-overview" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl text-rose-600 active-scale">
-      <span class="text-lg leading-none">🌟</span>
-      <span>Boussole</span>
+  <!-- Navigation Mobile Inférieure (Bottom Navigation Bar Ergonomique 5 Boutons) -->
+  <nav aria-label="Navigation mobile" class="mobile-bottom-nav md:hidden flex items-center justify-around py-1.5 px-2 text-xs font-semibold shadow-[0_-4px_25px_rgba(0,0,0,0.08)]">
+    <button type="button" data-target="tab-overview" class="mobile-nav-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-2xl text-rose-600 font-bold active-scale transition-smooth min-h-[48px]">
+      <span class="text-xl leading-none">🌟</span>
+      <span class="text-[10px] tracking-tight">Boussole</span>
     </button>
-    <button type="button" data-target="tab-translator" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">💬</span>
-      <span>Décodeur</span>
+    <button type="button" data-target="tab-translator" class="mobile-nav-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-2xl text-slate-500 hover:text-slate-800 active-scale transition-smooth min-h-[48px]">
+      <span class="text-xl leading-none">💬</span>
+      <span class="text-[10px] tracking-tight">Décodeur</span>
     </button>
-    <button type="button" data-target="tab-cycles" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">🔄</span>
-      <span>Cycles</span>
+    <button type="button" data-target="tab-cycles" class="mobile-nav-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-2xl text-slate-500 hover:text-slate-800 active-scale transition-smooth min-h-[48px]">
+      <span class="text-xl leading-none">🔄</span>
+      <span class="text-[10px] tracking-tight">Cycles</span>
     </button>
-    <button type="button" data-target="tab-points" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">🎯</span>
-      <span>101 Pts</span>
+    <button type="button" data-target="tab-points" class="mobile-nav-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-2xl text-slate-500 hover:text-slate-800 active-scale transition-smooth min-h-[48px]">
+      <span class="text-xl leading-none">🎯</span>
+      <span class="text-[10px] tracking-tight">101 Pts</span>
     </button>
-    <button type="button" data-target="tab-support" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">🤝</span>
-      <span>Soutien</span>
-    </button>
-    <button type="button" data-target="tab-letter" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">💌</span>
-      <span>Lettre</span>
-    </button>
-    <button type="button" data-target="tab-simulator" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">🛡️</span>
-      <span>Disputes</span>
-    </button>
-    <button type="button" data-target="tab-chapters" class="mobile-nav-btn flex flex-col items-center gap-1 p-1.5 rounded-xl hover:text-rose-600 active-scale">
-      <span class="text-lg leading-none">📖</span>
-      <span>Livre</span>
+    <button type="button" id="mobile-more-toggle-btn" class="mobile-nav-btn flex-1 flex flex-col items-center justify-center gap-0.5 py-1 px-1 rounded-2xl text-slate-500 hover:text-slate-800 active-scale transition-smooth min-h-[48px] relative">
+      <span id="mobile-more-btn-icon" class="text-xl leading-none">☰</span>
+      <span id="mobile-more-btn-label" class="text-[10px] tracking-tight">Menu</span>
+      <span id="mobile-more-btn-dot" class="hidden absolute top-1 right-3.5 w-2 h-2 rounded-full bg-rose-500 ring-2 ring-white"></span>
     </button>
   </nav>
+
+  <!-- Panneau Coulissant Mobile "Plus / Toutes les sections" (Bottom Sheet) -->
+  <div id="mobile-more-sheet" class="fixed inset-0 z-50 pointer-events-none transition-all duration-300 opacity-0 md:hidden">
+    <!-- Fond flouté sombre -->
+    <div id="mobile-more-backdrop" class="absolute inset-0 bg-slate-950/60 backdrop-blur-xs transition-opacity"></div>
+    
+    <!-- Conteneur modal coulissant -->
+    <div id="mobile-more-content" class="absolute bottom-0 left-0 right-0 bg-white rounded-t-3xl max-h-[85vh] overflow-y-auto shadow-2xl transition-transform duration-300 translate-y-full border-t border-slate-200 p-4 sm:p-6 pb-10 pointer-events-auto">
+      <!-- Poignée de glissement tactile -->
+      <div class="w-12 h-1.5 bg-slate-300 rounded-full mx-auto mb-4"></div>
+      
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h3 class="font-bold text-base sm:text-lg text-slate-900 font-serif-title">Toutes les sections</h3>
+          <p class="text-xs text-slate-500">Accédez instantanément à l'ensemble des modules</p>
+        </div>
+        <button type="button" id="mobile-more-close-btn" class="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 font-bold text-sm active-scale">
+          ✕
+        </button>
+      </div>
+
+      <!-- Grille des 8 modules avec descriptions -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 mb-5">
+        <button type="button" data-sheet-target="tab-overview" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl shrink-0">🌟</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Boussole & Besoins</div>
+            <div class="text-[11px] text-slate-500 truncate">Les 6 besoins vitaux & jauges affectives</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-translator" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center text-xl shrink-0">💬</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Grand Décodeur</div>
+            <div class="text-[11px] text-slate-500 truncate">28 expressions décryptées et traduites</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-cycles" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center text-xl shrink-0">🔄</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Cycles Émotionnels</div>
+            <div class="text-[11px] text-slate-500 truncate">Élastique martien & Vague vénusienne</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-points" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-pink-100 text-pink-600 flex items-center justify-center text-xl shrink-0">🎯</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Les 101 Points</div>
+            <div class="text-[11px] text-slate-500 truncate">Petites attentions & Barème de John Gray</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-support" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-amber-100 text-amber-600 flex items-center justify-center text-xl shrink-0">🤝</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Demander du Soutien</div>
+            <div class="text-[11px] text-slate-500 truncate">L'art de la demande sans braquer</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-letter" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-rose-100 text-rose-600 flex items-center justify-center text-xl shrink-0">💌</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Lettre d'Amour</div>
+            <div class="text-[11px] text-slate-500 truncate">Atelier d'écriture guidée en 5 étapes</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-simulator" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-600 flex items-center justify-center text-xl shrink-0">🛡️</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Anti-Disputes & Scénarios</div>
+            <div class="text-[11px] text-slate-500 truncate">Quiz interactifs, 46 phrases, 7 disputes</div>
+          </div>
+        </button>
+        <button type="button" data-sheet-target="tab-chapters" class="sheet-module-btn p-3 rounded-2xl border border-slate-200/90 hover:border-rose-300 bg-slate-50/70 hover:bg-rose-50/40 text-left flex items-center gap-3 transition-smooth active-scale">
+          <span class="w-10 h-10 rounded-xl bg-teal-100 text-teal-600 flex items-center justify-center text-xl shrink-0">📖</span>
+          <div class="min-w-0">
+            <div class="font-bold text-xs sm:text-sm text-slate-900 truncate">Les 13 Chapitres</div>
+            <div class="text-[11px] text-slate-500 truncate">Encyclopédie, fiches & Test 90/10</div>
+          </div>
+        </button>
+      </div>
+
+      <!-- Sélecteur de perspective dans la feuille mobile -->
+      <div class="p-3.5 rounded-2xl bg-slate-100 border border-slate-200 flex items-center justify-between gap-3">
+        <span class="text-xs font-bold text-slate-700">Perspective :</span>
+        <div class="flex items-center gap-1">
+          <button type="button" data-perspective="all" class="perspective-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 text-white shadow">Harmonie</button>
+          <button type="button" data-perspective="mars" class="perspective-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-slate-600">♂ Mars</button>
+          <button type="button" data-perspective="venus" class="perspective-btn px-2.5 py-1 rounded-lg text-xs font-semibold bg-white text-slate-600">♀ Vénus</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- Pied de page -->
   <footer class="bg-white border-t border-slate-200 py-6 mt-8 sm:mt-12 text-center text-xs text-slate-500 hidden md:block">

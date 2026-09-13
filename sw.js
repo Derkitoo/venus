@@ -1,5 +1,5 @@
 // Service Worker - Mars & Vénus PWA (John Gray)
-const CACHE_NAME = 'mars-venus-v1.2.0';
+const CACHE_NAME = 'mars-venus-v1.3.0';
 
 const STATIC_ASSETS = [
   './',
