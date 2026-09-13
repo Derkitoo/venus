@@ -251,14 +251,48 @@
         </div>
       </div>
 
+
+      <!-- Le Conte du Prince Charmant et du Dragon (Chapitre 8) -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-amber-200 shadow-sm mt-6">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="w-10 h-10 rounded-xl bg-amber-500 text-white flex items-center justify-center font-bold text-lg">🐉</span>
+          <div>
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-50 px-2.5 py-0.5 rounded-full">Allégorie Fondatrice — Chapitre 8</span>
+            <h3 class="text-base sm:text-xl font-bold font-serif-title text-slate-900 mt-1">La Légende du Prince Charmant, du Nœud Coulant et du Poison</h3>
+          </div>
+        </div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-amber-50/60 border border-amber-200 text-xs sm:text-sm text-slate-700 leading-relaxed space-y-3">
+          <p>
+            Quand le prince terrasse le premier dragon avec sa propre épée, il libère la princesse et tout le royaume le célèbre en héros. Mais au second dragon, la princesse lui crie du donjon : <em>« N'utilise pas ton épée, prends plutôt ce nœud coulant ! »</em>. Il obéit, mais au banquet, il ne se sent plus digne d'admiration.
+          </p>
+          <p>
+            Au troisième dragon, elle lui conseille la prudence, lui impose le nœud puis lui lance une fiole par la meurtrière : <em>« Prends plutôt ce poison ! »</em>. Le prince vainc le dragon mais rentre la tête basse, se sentant nul et castré. Plus tard, face à un nouveau dragon dans un autre village, il jette le nœud et le poison, dégaine son épée et triomphe seul ! Il épousa cette nouvelle princesse... après s'être assuré qu'elle ne connaissait rien aux nœuds coulants ni aux poisons !
+          </p>
+          <div class="p-3.5 bg-white rounded-xl border border-amber-300 text-amber-950 font-semibold text-xs">
+            🛡️ <strong>La Règle d'Or de John Gray :</strong> Pour donner de la force à un homme, le secret absolu est de ne <strong>JAMAIS</strong> tenter de le perfectionner ou de lui dicter comment combattre ses dragons. Laissez-lui son épée : votre admiration et votre confiance inconditionnelle sont son armure suprême.
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- ==================== 2. LE DÉCODEUR / TRADUCTEUR (28 EXPRESSIONS) ==================== -->
     <section id="tab-translator" class="tab-section hidden space-y-4 sm:space-y-6">
       
       <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm">
-        <div class="max-w-3xl mb-5 sm:mb-6">
-          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Chapitre 5 — Dictionnaire Exhaustif</span>
+        <!-- Sélecteur de sous-onglets Décodeur -->
+        <div class="flex items-center gap-2 p-1 rounded-xl bg-slate-100 border border-slate-200 w-fit mb-6">
+          <button type="button" id="subtab-dict-btn" class="subtab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-900 text-white shadow-sm transition-smooth">
+            💬 Grand Dictionnaire (28 Expressions)
+          </button>
+          <button type="button" id="subtab-traps-btn" class="subtab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-smooth">
+            ⚠️ Radar des 46 Phrases Pièges (Chapitre 2)
+          </button>
+        </div>
+
+        <div id="dict-view">
+          <div class="max-w-3xl mb-5 sm:mb-6">
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Chapitre 5 — Dictionnaire Exhaustif</span>
           <h2 class="text-xl sm:text-3xl font-bold font-serif-title text-slate-900 mt-2 mb-1.5 sm:mb-2">
             Le Grand Dictionnaire Martien ⟷ Vénusien (28 Expressions)
           </h2>
@@ -290,6 +324,39 @@
         <!-- Cartes du dictionnaire -->
         <div id="dictionary-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mt-6">
           <!-- Rempli par JavaScript -->
+        </div>
+
+        </div>
+        <!-- Fin dict-view -->
+
+        <!-- Vue Radar des 46 Phrases Pièges -->
+        <div id="traps-view" class="hidden space-y-6">
+          <div class="max-w-3xl">
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-amber-600 bg-amber-50 px-3 py-1 rounded-full">Chapitre 2 — Pages 38 à 41</span>
+            <h2 class="text-xl sm:text-3xl font-bold font-serif-title text-slate-900 mt-2 mb-1.5">
+              Le Radar des 46 Phrases Pièges (23 Bourdes de Mars & 23 Impairs de Vénus)
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Petites phrases en apparence anodines qui, selon John Gray, déclenchent instantanément le braquage de l'homme ou le sentiment d'invalidation chez la femme.
+            </p>
+          </div>
+
+          <!-- Filtres et Recherche du Radar -->
+          <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between pb-5 border-b border-slate-200">
+            <div class="relative w-full sm:w-96">
+              <input type="text" id="traps-search" placeholder="Rechercher une phrase piège..." class="w-full pl-9 pr-4 py-2 rounded-xl border border-slate-300 text-xs focus:ring-2 focus:ring-amber-500">
+              <span class="absolute left-3 top-2 text-slate-400 text-xs">🔍</span>
+            </div>
+            <div class="flex items-center gap-1.5">
+              <button type="button" data-traps-filter="all" class="traps-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-amber-500 text-white shadow-sm">Toutes (46)</button>
+              <button type="button" data-traps-filter="mars" class="traps-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">♂ 23 Bourdes Homme</button>
+              <button type="button" data-traps-filter="venus" class="traps-filter-btn px-3 py-1.5 rounded-xl text-xs font-bold bg-white text-slate-600 border border-slate-200 hover:bg-slate-50">♀ 23 Impairs Femme</button>
+            </div>
+          </div>
+
+          <div id="traps-cards" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rempli par JavaScript -->
+          </div>
         </div>
 
       </div>
@@ -440,7 +507,10 @@
                 👩 Pour combler une femme (Les 101 Attentions)
               </button>
               <button type="button" id="points-target-mars" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-smooth">
-                👨 Pour combler un homme (Règles Martiennes)
+                👨 Règles pour l'Homme (35 Points)
+              </button>
+              <button type="button" id="points-target-bonus" class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-600 hover:text-slate-900 transition-smooth">
+                🏆 26 Situations en Or pour Mars (+10 à +50 pts !)
               </button>
             </div>
 
@@ -523,12 +593,61 @@
 
             <div class="p-3.5 bg-emerald-50/80 rounded-xl border border-emerald-200 text-xs">
               <strong class="text-emerald-800 block mb-1">✅ La Formulation d'Or de John Gray :</strong>
-              <div class="text-slate-900 font-semibold">« Romain, pourrais-tu sortir les poubelles s'il te plaît ? » (Dit avec un sourire direct, sans justification supplémentaire)</div>
-              <div class="text-[11px] text-emerald-700 mt-1 font-medium">➡️ Effet : Court, direct, utilise 'Pourrais-tu' (fait appel à son bon vouloir sans contrainte), respecte sa liberté d'action. Il se sent respecté et rend service de bon cœur !</div>
+              <div class="text-slate-900 font-semibold">« Romain, voudrais-tu sortir les poubelles s'il te plaît ? » (ou « Veux-tu », dit avec un sourire direct, sans justification supplémentaire)</div>
+              <div class="text-[11px] text-emerald-700 mt-1 font-medium">➡️ Effet : Court, direct, utilise 'Voudrais-tu' ou 'Veux-tu' (laisse son honneur et sa liberté intacts sans mettre en doute sa capacité physique), respecte sa liberté d'action. Il se sent respecté et rend service de bon cœur !</div>
             </div>
           </div>
         </div>
       </div>
+
+
+        <!-- Les 10 Demandes Indirectes vs Directes (Chapitre 12, pages 294-297) -->
+        <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+          <div>
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Chapitre 12 — Dictionnaire de la Demande</span>
+            <h3 class="text-base sm:text-xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+              Les 10 Demandes Indirectes vs Directes (« Voudrais-tu » vs « Peux-tu »)
+            </h3>
+            <p class="text-xs text-slate-600">
+              Pourquoi l'homme résiste-t-il souvent aux demandes de la femme ? Découvrez la traduction martienne de 10 requêtes du quotidien.
+            </p>
+          </div>
+
+          <div id="indirect-demands-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rempli par JavaScript -->
+          </div>
+        </div>
+
+        <!-- Les 17 Témoignages d'Hommes sur « Voudrais-tu » (Chapitre 12, pages 297-302) -->
+        <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+          <div>
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-3 py-1 rounded-full">Enquête de John Gray</span>
+            <h3 class="text-base sm:text-xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+              Ce que 17 Hommes Répondent sur « Voudrais-tu » vs « Peux-tu »
+            </h3>
+            <p class="text-xs text-slate-600">
+              « Peux-tu » met en doute leur capacité virile et ressemble à un ordre. « Voudrais-tu » honore leur libre arbitre et réveille leur désir de servir.
+            </p>
+          </div>
+
+          <div id="testimonies-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5 max-h-96 overflow-y-auto pr-1">
+            <!-- Rempli par JavaScript -->
+          </div>
+        </div>
+
+        <!-- L'Histoire Culte du Lait à l'Épicerie (Chapitre 12, pages 315-317) -->
+        <div class="mt-8 p-5 sm:p-6 rounded-2xl bg-indigo-50/70 border border-indigo-200 text-xs sm:text-sm text-slate-700 space-y-2.5">
+          <div class="flex items-center gap-2.5">
+            <span class="text-2xl">🥛</span>
+            <h4 class="font-bold text-slate-900 text-sm sm:text-base font-serif-title">L'Épiphanie de John Gray : Le Lait, la Grogne et le Héros Martien</h4>
+          </div>
+          <p class="leading-relaxed">
+            « Lorsque ma femme Bonnie m'a demandé d'aller chercher du lait alors que j'allais me coucher, j'ai grogné très fort. Mais elle est restée parfaitement silencieuse, respectant ma grogne. En claquant la porte, je suis monté en voiture... et à mesure que j'approchais de l'épicerie, mon humeur s'est apaisée. En soulevant la bouteille de lait, je me suis redressé fièrement avec un sourire : <em>'Regardez-moi, je suis venu chercher du lait pour ma femme, je suis un super mari !'</em>. À mon retour, Bonnie m'a submergé d'amour et de gratitude. Sa patience face à ma grogne a programmé mon cerveau à dire OUI la fois suivante ! »
+          </p>
+          <div class="p-2.5 bg-white rounded-xl border border-indigo-200 text-indigo-900 text-xs font-semibold">
+            ✨ <strong>Leçon pour la femme :</strong> La grogne d'un homme n'est pas un refus ! C'est le bruit d'une charnière rouillée qui s'assouplit. Gardez le silence et laissez-le accomplir son geste d'amour.
+          </div>
+        </div>
 
     </section>
 
@@ -607,6 +726,43 @@
 
       </div>
 
+
+        <!-- Bibliothèque des Vraies Lettres d'Amour du Livre (Chapitre 11, pages 250-264) -->
+        <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Cas Réels de John Gray</span>
+              <h3 class="text-base sm:text-xl font-bold font-serif-title text-slate-900 mt-1">
+                La Bibliothèque des Véritables Lettres d'Amour du Livre
+              </h3>
+              <p class="text-xs text-slate-600">
+                Consultez les lettres authentiques rédigées par les patients de John Gray et chargez-les en un clic dans votre éditeur pour vous en inspirer.
+              </p>
+            </div>
+          </div>
+
+          <div id="real-letters-container" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- Rempli par JavaScript -->
+          </div>
+        </div>
+
+        <!-- Les 16 Masques Émotionnels (Chapitre 11, pages 277-279) -->
+        <div class="mt-8 pt-8 border-t border-slate-200 space-y-4">
+          <div>
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-3 py-1 rounded-full">Psychologie des Défenses</span>
+            <h3 class="text-base sm:text-xl font-bold font-serif-title text-slate-900 mt-1">
+              Les 16 Masques Émotionnels : Ce que cachent réellement nos sentiments
+            </h3>
+            <p class="text-xs text-slate-600">
+              Derrière chaque réaction agressive, distante ou anxieuse se dissimule une émotion plus vulnérable qui cherche à s'exprimer.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="emotional-masks-container">
+            <!-- Rempli par JavaScript -->
+          </div>
+        </div>
+
     </section>
 
     <!-- ==================== 7. ANTI-DISPUTES & SCÉNARIOS (CHAPITRE 9) ==================== -->
@@ -645,6 +801,41 @@
         </div>
       </div>
 
+
+      <!-- L'Anatomie des 7 Disputes Types du Dr John Gray (Chapitre 9, pages 198-207) -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+        <div>
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 px-3 py-1 rounded-full">Chapitre 9 — Analyse Clinique</span>
+          <h3 class="text-base sm:text-2xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+            L'Anatomie des 7 Disputes Types (Décryptage en 6 Volets)
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600">
+            Pour chaque situation critique : la question de Madame, ce qu'entend Monsieur, son explication logique, la perception féminine blessée, et les 2 réponses salvatrices.
+          </p>
+        </div>
+
+        <div id="disputes-analysis-container" class="grid grid-cols-1 gap-4">
+          <!-- Rempli par JavaScript -->
+        </div>
+      </div>
+
+      <!-- Pourquoi Nous Nous Disputons (Les 8 Raisons Profondes des Hommes vs 8 des Femmes, pages 185-189) -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-4">
+        <div>
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-3 py-1 rounded-full">Psychologie des Conflits</span>
+          <h3 class="text-base sm:text-2xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+            Pourquoi Nous Nous Disputons : Les 8 Motifs Profonds & Besoins Cachés
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600">
+            En apparence, on se dispute pour l'argent ou le retard. En réalité, c'est toujours le manque ressenti d'un besoin primaire spécifique.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="dispute-reasons-container">
+          <!-- Rempli par JavaScript -->
+        </div>
+      </div>
+
     </section>
 
     <!-- ==================== 8. LES 13 CHAPITRES APPROFONDIS ==================== -->
@@ -669,6 +860,50 @@
 
       <div id="chapters-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
         <!-- Rempli par JavaScript -->
+      </div>
+
+
+      <!-- Le Baromètre des 90/10 & Les 12 Déclencheurs du Passé (Chapitre 13, pages 321-330) -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-5">
+        <div>
+          <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-rose-600 bg-rose-50 px-3 py-1 rounded-full">Révélation Majeure — Chapitre 13</span>
+          <h3 class="text-base sm:text-2xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+            Le Principe des 90/10 : Pourquoi une Broutille Déclenche un Orage ?
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+            Lorsque nous explosons face à notre partenaire, <strong>90% du trouble provient de nos blessures non cicatrisées du passé</strong>, et seulement 10% de la situation présente ! Explorez les 12 moments paradoxaux où l'amour fait remonter le refoulé.
+          </p>
+        </div>
+
+        <div id="past-triggers-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+          <!-- Rempli par JavaScript -->
+        </div>
+      </div>
+
+      <!-- Test d'Auto-Évaluation : Les 18 Questions d'Introspection sur l'Enfance (Chapitre 11, pages 272-274) -->
+      <div class="bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <span class="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full">Auto-Évaluation Thérapeutique</span>
+            <h3 class="text-base sm:text-2xl font-bold font-serif-title text-slate-900 mt-2 mb-1">
+              Les 18 Questions de John Gray sur Nos Blessures d'Enfance
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600">
+              Cochez les questions qui résonnent avec votre histoire familiale pour identifier vos zones de vulnérabilité émotionnelle.
+            </p>
+          </div>
+          <div class="text-xs font-bold px-3 py-1.5 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-200 self-start sm:self-auto">
+            Score : <span id="childhood-checked-count">0</span> / 18
+          </div>
+        </div>
+
+        <div id="childhood-questions-container" class="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <!-- Rempli par JavaScript -->
+        </div>
+
+        <div id="childhood-verdict" class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-700 leading-relaxed">
+          💡 <strong>Constat de John Gray :</strong> Nous n'avons pas eu 18 ans d'entraînement sain à communiquer nos émotions. Ayez de l'indulgence pour vous-même et votre partenaire : réapprendre est un chemin pas à pas !
+        </div>
       </div>
 
     </section>

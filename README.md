@@ -1,6 +1,6 @@
-# ?? Mars & Vénus — L'Application Guide Relationnel PWA
+ï»¿# ğŸª Mars & VÃ©nus â€” L'Application Guide Relationnel PWA (Dr John Gray)
 
-> Application Web Progressive (PWA) interactive et complète inspirée de l'œuvre majeure du **Dr John Gray** : *Les hommes viennent de Mars, les femmes viennent de Vénus* (*Men Are from Mars, Women Are from Venus*).
+> Application Web Progressive (PWA) interactive et ultra-complÃ¨te basÃ©e fidÃ¨lement sur le livre original du **Dr John Gray** : *Les hommes viennent de Mars, les femmes viennent de VÃ©nus* (*Men Are from Mars, Women Are from Venus*, Ã‰ditions J'ai Lu).
 
 [![PWA Ready](https://img.shields.io/badge/PWA-100%25_Offline_Ready-success?style=for-the-badge&logo=pwa)](https://derkitoo.github.io/venus/)
 [![Responsive Design](https://img.shields.io/badge/Responsive-Mobile_%26_Desktop-blue?style=for-the-badge)](https://derkitoo.github.io/venus/)
@@ -8,81 +8,76 @@
 
 ---
 
-## ?? Démonstration en direct (GitHub Pages)
+## ğŸŒŸ DÃ©monstration en direct (GitHub Pages)
 
-?? **Accéder à l'application en ligne : [https://derkitoo.github.io/venus/](https://derkitoo.github.io/venus/)**
-
----
-
-## ? Fonctionnalités Incluses
-
-1. **?? Véritable Progressive Web App (PWA) :**
-   - Fonctionnement **100% hors-ligne** grâce au Service Worker (sw.js).
-   - Installable sur l'écran d'accueil de n'importe quel smartphone (**iOS**, **Android**) ou PC/Mac comme une application native.
-   - Icônes haute résolution (192x192, 512x512, maskable et apple-touch-icon).
-   - Manifest Web conforme avec raccourcis rapides intégrés.
-
-2. **?? Décodeur & Traducteur Martien / Vénusien :**
-   - 28 expressions courantes décryptées dans les deux sens :
-     - Ce que la femme vénusienne dit vs ce que l'homme martien entend vs ce qu'elle veut dire réellement + Réaction recommandée.
-     - Ce que l'homme martien dit (ou son silence) vs ce que la femme vénusienne craint vs le sens réel + Clé martienne.
-
-3. **?? Baromètre Interactif des Cycles :**
-   - **L'élastique martien** : cycle de rapprochement, retrait dans sa caverne, détente, et retour avec passion renouvelée.
-   - **La vague vénusienne** : crête de confiance et d'épanouissement, descente dans le puits émotionnel, besoin de réassurance inconditionnelle.
-
-4. **?? Les 101 Façons de Marquer des Points auprès d'une Vénusienne :**
-   - Liste exhaustive et intégrale des **101 attentions** du livre réparties par catégories du quotidien (Maison, Romantisme, Écoute, Sorties, Reconnaissance...).
-   - Système de notation : chez Vénus, **chaque attention = 1 point** (un petit mot doux compte autant qu'un bijou coûteux !).
-   - Filtres de recherche instantanée et cases à cocher persistantes (localStorage).
-
-5. **??? Les 10 Règles d'Or pour Soutenir un Martien :**
-   - Guide pour soutenir un homme sans le materner, sans conseils non sollicités, et en valorisant ses compétences.
-
-6. **?? Rédacteur Guidé de la "Lettre d'Amour" en 5 Temps :**
-   - Méthode thérapeutique du Dr John Gray pour évacuer la rancœur et renouer avec l'amour :
-     1. Colère & reproches
-     2. Tristesse & déception
-     3. Peur & insécurités
-     4. Regret & responsabilité
-     5. Amour, pardon & souhaits
-   - Rédaction assistée avec phrases types, aperçu en direct et export/copie instantané.
-
-7. **? Désamorceur de Conflits & 4 Postures Défensives :**
-   - Analyse des réflexes toxiques : *Se battre*, *Fuir*, *Faire semblant*, *Céder*.
-   - Guide de sortie de crise bienveillant.
-
-8. **?? Simulateur de Situations Réelles :**
-   - Mises en situation interactives (retard au dîner, caverne martienne, journée difficile...) avec scores et explications psychologiques.
-
-9. **?? Encyclopédie des 13 Chapitres :**
-   - Synthèses fouillées, citations marquantes et exercices pratiques pour chacun des 13 chapitres du livre.
+ğŸ‘‰ **AccÃ©der Ã  l'application en ligne : [https://derkitoo.github.io/venus/](https://derkitoo.github.io/venus/)**
 
 ---
 
-## ?? Activation de GitHub Pages
+## âœ¨ FonctionnalitÃ©s Majeures & NouveautÃ©s TirÃ©es du Livre
 
-Pour activer la page GitHub Pages sur ce dépôt :
+1. **âš ï¸ Radar des 46 Phrases PiÃ¨ges (Chapitre 2, pages 38-41) :**
+   - **23 Bourdes Involontaires de l'Homme** : les phrases martiennes types qui invalident la femme (*Â« Tu ne devrais pas t'en faire autant Â»*, *Â« Ce n'est pas ce que j'ai dit Â»*, *Â« Pourquoi ne le fais-tu pas toi-mÃªme ? Â»*, etc.) et l'explication de l'impact ressenti.
+   - **23 Impairs de la Femme** : les remarques vÃ©nusiennes qui hÃ©rissent l'homme en le traitant comme un enfant ou un incompÃ©tent (*Â« Tu ne vas pas acheter Ã§a ? Â»*, *Â« Tu devrais appeler un plombier Â»*, *Â« La vaisselle est encore mouillÃ©e Â»*, etc.).
 
-1. Allez dans les **Settings** (Paramètres) du dépôt : https://github.com/Derkitoo/venus/settings/pages
-2. Dans la section **Build and deployment** > **Source** :
-   - Sélectionnez : **Deploy from a branch**
-   - Branch : **main** / Dossier : **/(root)**
-3. Cliquez sur **Save**.
-4. En quelques instants, votre application sera accessible à l'adresse :
-   ?? **https://derkitoo.github.io/venus/**
+2. **âš”ï¸ L'Anatomie des 7 Disputes Types du Dr John Gray (Chapitre 9, pages 198-207) :**
+   - Retard, oubli, sortie de caverne, dÃ©ception, sentiments blessÃ©s, quand il est pressÃ©, quand la conversation dÃ©prÃ©cie ses sentiments.
+   - DÃ©cryptage complet en 6 volets : la question de Madame, ce qu'entend Monsieur, son explication, ce qu'elle perÃ§oit, la clÃ© pour elle (attÃ©nuer la dÃ©sapprobation), et la clÃ© pour lui (valider l'Ã©motion).
+
+3. **ğŸ”¥ Les 8 Motifs Profonds des Disputes (Hommes vs Femmes, pages 185-189) :**
+   - Pourquoi les hommes partent en guerre (manque d'admiration, d'acceptation, de confiance).
+   - Pourquoi les femmes se rÃ©voltent (manque d'attention, de respect, d'Ã©coute).
+
+4. **ğŸ§  Le BaromÃ¨tre des 90/10 & Test des 18 Questions d'Enfance (Chapitre 13 & 11) :**
+   - **Le Principe 90/10** : 90% du trouble lors d'une dispute vient de notre enfance et nos blessures non guÃ©ries, 10% seulement de la situation actuelle.
+   - **12 DÃ©clencheurs Inattendus** : les moments paradoxaux oÃ¹ l'amour fait resurgir les blessures passÃ©es.
+   - **Test Interactif des 18 Questions d'Enfance** avec diagnostic de bienveillance.
+
+5. **ğŸ’Œ BibliothÃ¨que des VÃ©ritables Lettres d'Amour Cliniques (Chapitre 11, pages 250-264) :**
+   - Les lettres authentiques de patients de John Gray : **Samantha & Tom**, **Virginia & Jim**, **Michael & Vanessa**, **Bill & Jane**, et **Theresa & Paul** (avec sa lettre-rÃ©ponse idÃ©ale).
+   - Bouton **Â« Charger ce modÃ¨le dans mon Ã©diteur Â»** pour personnaliser la lettre directement dans le formulaire en 5 sections (ColÃ¨re, Tristesse, Peur, Regret, Amour).
+   - Tableau des **16 Masques Ã‰motionnels** (8 masques masculins vs 8 masques fÃ©minins).
+
+6. **ğŸ† Le BarÃ¨me Martien & Les 26 Situations en Or (+10 Ã  +50 pts pour Mars ! Chapitre 10) :**
+   - Les 26 situations critiques oÃ¹ la femme marque des dizaines de points auprÃ¨s de l'homme (ne pas lui dire *Â« Je te l'avais bien dit Â»* quand il se trompe, admirer le coucher de soleil quand il se perd en voiture, l'accueillir tendrement Ã  sa sortie de caverne, etc.).
+   - La rÃ¨gle de **l'ouragan martien** : se mettre Ã  l'abri au lieu d'affronter la tempÃªte.
+
+7. **ğŸ¤ L'Art de la Demande & Les 17 TÃ©moignages d'Hommes (Chapitre 12, pages 294-302) :**
+   - Les 3 Ã©tapes de la demande (ce qu'il donne dÃ©jÃ , demander plus mÃªme s'il dit non, demander en imposant le respect).
+   - Comparateur des **10 Demandes Indirectes vs Directes** : pourquoi bannir dÃ©finitivement *Â« Peux-tu Â» / Â« Pourrais-tu Â»* au profit de *Â« Veux-tu Â» / Â« Voudrais-tu Â»*.
+   - Les 17 tÃ©moignages d'hommes expliquant la diffÃ©rence viscÃ©rale entre ces deux verbes.
+   - Le rÃ©cit culte du lait Ã  l'Ã©picerie et de la **grogne masculine**.
+
+8. **ğŸ‰ Le Conte du Prince Charmant et du Dragon (Chapitre 8, pages 164-166) :**
+   - La fable de l'Ã©pÃ©e, du nÅ“ud coulant et du poison : pourquoi toute tentative d'amÃ©liorer un homme lui Ã´te sa puissance.
+
+9. **ğŸ’¯ Les 101 Points VÃ©nusiens & Le Grand Dictionnaire (28 Expressions) :**
+   - La liste officielle intÃ©grale des 101 attentions quotidiennes (1 geste = 1 point) avec persistance `localStorage`.
+   - 28 dialogues dÃ©cryptÃ©s dans les deux sens (VÃ©nusien âŸ· Martien).
+
+10. **ğŸ”„ BaromÃ¨tre des Cycles (Ã‰lastique & Vague) :**
+    - Curseurs interactifs avec Ã©tat Ã©motionnel, pensÃ©e intime de l'autre, et prescriptions Ã  faire / Ã  Ã©viter.
 
 ---
 
-## ??? Stack Technique
+## ğŸ“± Installation Progressive Web App (PWA)
 
-- **HTML5 Sémantique & CSS Moderne** (Tailwind CSS via CDN + styles.css optimisé mobile/safe-area iOS).
-- **Vanilla JavaScript (ES6+)** ultra rapide sans dépendance lourde.
-- **Service Worker & Web App Manifest** conformes aux standards PWA modernes.
-- **Persistance locale** (localStorage) pour conserver vos points cochés et votre progression.
+- **100% Fonctionnel Hors-Ligne** : grÃ¢ce au Service Worker (`sw.js` v1.2.0) et aux ressources prÃ©-mises en cache.
+- **Sur iPhone / iPad (iOS Safari)** : Appuyez sur le bouton de partage (carrÃ© avec flÃ¨che vers le haut) puis **Â« Sur l'Ã©cran d'accueil Â»**.
+- **Sur Android (Chrome / Brave)** : Cliquez sur le bouton **Â« Installer Â»** dans l'en-tÃªte de l'application ou le menu â‹® > **Â« Installer l'application Â»**.
+- **Sur PC / Mac (Chrome / Edge)** : Cliquez sur l'icÃ´ne d'installation dans la barre d'adresse.
 
 ---
 
-## ?? Licence
+## ğŸ› ï¸ Stack Technique
 
-Ce projet est à but éducatif et relationnel, basé sur les travaux de recherche du Dr John Gray.
+- **HTML5 SÃ©mantique & Tailwind CSS** (Responsive Mobile-First avec Bottom Navigation Bar ergonomique).
+- **Vanilla JavaScript moderne (ES6+)** ultra lÃ©ger, rÃ©actif et sans dÃ©pendance lourde.
+- **Service Worker & Manifest Web PWA** conformes aux standards W3C.
+- **Stockage Local (`localStorage`)** persistant pour vos scores, lettres et points cochÃ©s.
+
+---
+
+## ğŸ“„ Licence & Droits
+
+Projet Ã©ducatif et relationnel basÃ© sur l'Å“uvre du Dr John Gray (*Men Are from Mars, Women Are from Venus*).

@@ -15,6 +15,13 @@ document.addEventListener('DOMContentLoaded', () => {
   initDefensiveStances();
   initSimulator();
   initChapters();
+  initTraps();
+  initBonusPoints();
+  initIndirectDemands();
+  initRealLetters();
+  initEmotionalMasks();
+  initDisputesAnalysis();
+  initNinetyTen();
   handleUrlHash();
 });
 
@@ -907,4 +914,474 @@ function initChapters() {
 
   if (searchInput) searchInput.addEventListener('input', renderChapters);
   renderChapters();
+}
+
+
+// ==========================================================
+// 12. RADAR DES 46 PHRASES PIÈGES (CHAPITRE 2 DU LIVRE)
+// ==========================================================
+function initTraps() {
+  const subtabDictBtn = document.getElementById('subtab-dict-btn');
+  const subtabTrapsBtn = document.getElementById('subtab-traps-btn');
+  const dictView = document.getElementById('dict-view');
+  const trapsView = document.getElementById('traps-view');
+  const container = document.getElementById('traps-cards');
+  const searchInput = document.getElementById('traps-search');
+  const filterBtns = document.querySelectorAll('.traps-filter-btn');
+
+  if (subtabDictBtn && subtabTrapsBtn && dictView && trapsView) {
+    subtabDictBtn.addEventListener('click', () => {
+      dictView.classList.remove('hidden');
+      trapsView.classList.add('hidden');
+      subtabDictBtn.classList.add('bg-slate-900', 'text-white');
+      subtabDictBtn.classList.remove('text-slate-600');
+      subtabTrapsBtn.classList.remove('bg-slate-900', 'text-white');
+      subtabTrapsBtn.classList.add('text-slate-600');
+    });
+
+    subtabTrapsBtn.addEventListener('click', () => {
+      trapsView.classList.remove('hidden');
+      dictView.classList.add('hidden');
+      subtabTrapsBtn.classList.add('bg-slate-900', 'text-white');
+      subtabTrapsBtn.classList.remove('text-slate-600');
+      subtabDictBtn.classList.remove('bg-slate-900', 'text-white');
+      subtabDictBtn.classList.add('text-slate-600');
+    });
+  }
+
+  if (!container || !MARS_VENUS_DATA.traps46) return;
+
+  let currentTrapFilter = 'all';
+
+  function renderTraps() {
+    const query = (searchInput?.value || '').toLowerCase().trim();
+    let allItems = [];
+
+    if (currentTrapFilter === 'all' || currentTrapFilter === 'mars') {
+      MARS_VENUS_DATA.traps46.marsBourdes23.forEach(t => {
+        allItems.push({ ...t, origin: 'mars', typeLabel: '♂ Bourde Martienne', badgeClass: 'bg-orange-100 text-orange-800 border-orange-200' });
+      });
+    }
+
+    if (currentTrapFilter === 'all' || currentTrapFilter === 'venus') {
+      MARS_VENUS_DATA.traps46.venusImpairs23.forEach(t => {
+        allItems.push({ ...t, origin: 'venus', typeLabel: '♀ Impair Vénusien', badgeClass: 'bg-pink-100 text-pink-800 border-pink-200' });
+      });
+    }
+
+    const filtered = allItems.filter(item => {
+      const p = item.phrase.toLowerCase();
+      const exp = (item.explanation || item.perception || '').toLowerCase();
+      return p.includes(query) || exp.includes(query);
+    });
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div class="col-span-full py-8 text-center text-slate-400 text-xs">Aucune phrase ne correspond à « ${query} ».</div>`;
+      return;
+    }
+
+    container.innerHTML = filtered.map(item => `
+      <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs card-hover flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full border ${item.badgeClass}">${item.typeLabel} #${item.id}</span>
+            <span class="text-[10px] text-slate-400">Chapitre 2</span>
+          </div>
+          <h4 class="text-xs sm:text-sm font-bold text-slate-900 mb-2">« ${item.phrase} »</h4>
+          <p class="text-xs text-slate-600 leading-relaxed mb-3">
+            <strong class="text-slate-800">${item.origin === 'mars' ? 'Effet sur la femme :' : 'Ce que l\'homme ressent :'}</strong>
+            ${item.explanation || item.perception}
+          </p>
+        </div>
+        <div class="p-2.5 rounded-xl ${item.origin === 'mars' ? 'bg-orange-50/70 border border-orange-100 text-orange-950' : 'bg-pink-50/70 border border-pink-100 text-pink-950'} text-[11px] font-medium">
+          💡 <strong>Conseil John Gray :</strong> ${item.origin === 'mars' ? 'Écoutez sans chercher à minimiser ou à apporter une solution miracle.' : 'Faites confiance à sa capacité à gérer seul sans conseil non sollicité.'}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterBtns.forEach(b => {
+        b.classList.remove('bg-amber-500', 'text-white', 'shadow-sm');
+        b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+      });
+      btn.classList.add('bg-amber-500', 'text-white', 'shadow-sm');
+      btn.classList.remove('bg-white', 'text-slate-600', 'border');
+      currentTrapFilter = btn.dataset.trapsFilter;
+      renderTraps();
+    });
+  });
+
+  if (searchInput) searchInput.addEventListener('input', renderTraps);
+  renderTraps();
+}
+
+// ==========================================================
+// 13. LES 26 SITUATIONS BONUS POUR MARS (+10 À +50 PTS)
+// ==========================================================
+function initBonusPoints() {
+  const btnVenus = document.getElementById('points-target-venus');
+  const btnMars = document.getElementById('points-target-mars');
+  const btnBonus = document.getElementById('points-target-bonus');
+  const pointsList = document.getElementById('points-list');
+  const venusCatBar = document.getElementById('venus-categories-bar');
+  const bonusView = document.getElementById('bonus-points-view');
+  const bonusListContainer = document.getElementById('bonus-points-list');
+
+  if (!btnBonus || !bonusView || !bonusListContainer || !MARS_VENUS_DATA.bonusPointsWomen26) return;
+
+  const savedBonus = JSON.parse(localStorage.getItem('mars_bonus_checked') || '{}');
+
+  function renderBonus() {
+    bonusListContainer.innerHTML = MARS_VENUS_DATA.bonusPointsWomen26.map(item => {
+      const isChecked = !!savedBonus[item.id];
+      return `
+        <div class="p-3.5 sm:p-4 rounded-xl bg-white border ${isChecked ? 'border-amber-400 bg-amber-50/30' : 'border-slate-200'} shadow-xs card-hover flex items-start gap-3">
+          <input type="checkbox" id="bonus-chk-${item.id}" data-bonus-id="${item.id}" ${isChecked ? 'checked' : ''} class="bonus-checkbox mt-1 w-4 h-4 rounded text-amber-600 focus:ring-amber-500 cursor-pointer">
+          <label for="bonus-chk-${item.id}" class="flex-1 cursor-pointer">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300">${item.points}</span>
+              <span class="text-[10px] text-slate-400 font-medium">Situation #${item.id}</span>
+            </div>
+            <p class="text-xs text-slate-700 leading-relaxed">${item.situation}</p>
+          </label>
+        </div>
+      `;
+    }).join('');
+
+    bonusListContainer.querySelectorAll('.bonus-checkbox').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const id = chk.dataset.bonusId;
+        savedBonus[id] = chk.checked;
+        localStorage.setItem('mars_bonus_checked', JSON.stringify(savedBonus));
+        renderBonus();
+      });
+    });
+  }
+
+  btnBonus.addEventListener('click', () => {
+    btnBonus.classList.add('bg-amber-500', 'text-white', 'shadow-sm');
+    btnBonus.classList.remove('text-slate-600');
+    btnVenus.classList.remove('bg-pink-600', 'text-white', 'shadow-sm');
+    btnVenus.classList.add('text-slate-600');
+    btnMars.classList.remove('bg-orange-600', 'text-white', 'shadow-sm');
+    btnMars.classList.add('text-slate-600');
+
+    if (pointsList) pointsList.classList.add('hidden');
+    if (venusCatBar) venusCatBar.classList.add('hidden');
+    bonusView.classList.remove('hidden');
+    renderBonus();
+  });
+
+  // Revenir aux vues standard lors des clics sur les autres boutons
+  if (btnVenus) {
+    btnVenus.addEventListener('click', () => {
+      bonusView.classList.add('hidden');
+      if (pointsList) pointsList.classList.remove('hidden');
+      if (venusCatBar) venusCatBar.classList.remove('hidden');
+      btnBonus.classList.remove('bg-amber-500', 'text-white', 'shadow-sm');
+      btnBonus.classList.add('text-slate-600');
+    });
+  }
+
+  if (btnMars) {
+    btnMars.addEventListener('click', () => {
+      bonusView.classList.add('hidden');
+      if (pointsList) pointsList.classList.remove('hidden');
+      if (venusCatBar) venusCatBar.classList.add('hidden');
+      btnBonus.classList.remove('bg-amber-500', 'text-white', 'shadow-sm');
+      btnBonus.classList.add('text-slate-600');
+    });
+  }
+}
+
+// ==========================================================
+// 14. DEMANDES DIRECTES VS INDIRECTES & TÉMOIGNAGES (CH. 12)
+// ==========================================================
+function initIndirectDemands() {
+  const demandsContainer = document.getElementById('indirect-demands-container');
+  const testimoniesContainer = document.getElementById('testimonies-container');
+
+  if (demandsContainer && MARS_VENUS_DATA.indirectDemandsComparison) {
+    demandsContainer.innerHTML = MARS_VENUS_DATA.indirectDemandsComparison.map((item, idx) => `
+      <div class="p-4 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-3">
+        <div class="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs">
+          <span class="text-[10px] font-bold text-rose-700 uppercase tracking-wider block mb-1">❌ Demande indirecte :</span>
+          <p class="text-slate-800 italic">${item.indirect}</p>
+          <p class="text-[11px] text-rose-600 mt-1.5 font-medium">➡️ <em>Perception martienne :</em> ${item.perceived}</p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-xs">
+          <span class="text-[10px] font-bold text-emerald-800 uppercase tracking-wider block mb-1">✅ Formulation directe recommandée :</span>
+          <p class="text-slate-900 font-bold">${item.direct}</p>
+          <p class="text-[11px] text-emerald-700 mt-1 font-medium">➡️ <em>Effet :</em> Laisse l'honneur et le libre arbitre de l'homme intacts.</p>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  if (testimoniesContainer && MARS_VENUS_DATA.menTestimonies17) {
+    testimoniesContainer.innerHTML = MARS_VENUS_DATA.menTestimonies17.map(t => `
+      <div class="p-3.5 rounded-xl bg-white border border-blue-100 shadow-2xs text-xs flex flex-col justify-between">
+        <p class="text-slate-700 italic leading-relaxed mb-2">« ${t.quote} »</p>
+        <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider self-end">Témoignage #${t.num}</span>
+      </div>
+    `).join('');
+  }
+}
+
+// ==========================================================
+// 15. BIBLIOTHÈQUE DES VRAIES LETTRES D'AMOUR (CH. 11)
+// ==========================================================
+function initRealLetters() {
+  const container = document.getElementById('real-letters-container');
+  if (!container || !MARS_VENUS_DATA.realLoveLetters) return;
+
+  container.innerHTML = MARS_VENUS_DATA.realLoveLetters.map(item => `
+    <div class="p-5 rounded-2xl bg-white border border-slate-200 shadow-sm flex flex-col justify-between">
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-[10px] font-bold px-2.5 py-0.5 rounded-full bg-rose-100 text-rose-800">Cas Clinique Réel</span>
+          <span class="text-xs font-semibold text-slate-500">${item.author}</span>
+        </div>
+        <h4 class="text-sm font-bold text-slate-900 mb-1.5 font-serif-title">${item.author}</h4>
+        <p class="text-xs text-slate-500 italic mb-3">${item.context}</p>
+
+        <div class="space-y-2 text-xs text-slate-700 p-3 rounded-xl bg-slate-50 border border-slate-100 max-h-48 overflow-y-auto mb-3">
+          <p><strong class="text-red-700">1. Colère :</strong> ${item.letter.colere}</p>
+          <p><strong class="text-blue-700">2. Tristesse :</strong> ${item.letter.tristesse}</p>
+          <p><strong class="text-amber-700">3. Peur :</strong> ${item.letter.peur}</p>
+          <p><strong class="text-purple-700">4. Regret :</strong> ${item.letter.regret}</p>
+          <p><strong class="text-emerald-700">5. Amour :</strong> ${item.letter.amour}</p>
+          ${item.letter.ps ? `<p><strong class="text-rose-700">P.-S. :</strong> ${item.letter.ps}</p>` : ''}
+          ${item.letter.reponseIdeal ? `<div class="mt-2 pt-2 border-t border-slate-200"><strong class="text-indigo-700">Lettre-Réponse Idéale :</strong> ${item.letter.reponseIdeal}</div>` : ''}
+        </div>
+      </div>
+
+      <button type="button" data-letter-id="${item.id}" class="load-letter-btn w-full py-2 rounded-xl bg-rose-50 hover:bg-rose-100 text-rose-700 font-bold text-xs border border-rose-200 transition-smooth active-scale">
+        📥 Charger ce modèle dans mon éditeur
+      </button>
+    </div>
+  `).join('');
+
+  container.querySelectorAll('.load-letter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.letterId;
+      const target = MARS_VENUS_DATA.realLoveLetters.find(l => l.id === id);
+      if (!target) return;
+
+      loveLetterData = [
+        target.letter.colere,
+        target.letter.tristesse,
+        target.letter.peur,
+        target.letter.regret,
+        target.letter.amour,
+        target.letter.reponseIdeal || target.letter.ps || ''
+      ];
+
+      currentLoveLetterStep = 0;
+      renderLoveLetterStep();
+      updateLoveLetterPreview();
+
+      const inputEl = document.getElementById('ll-input');
+      if (inputEl) inputEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+}
+
+// ==========================================================
+// 16. LES 16 MASQUES ÉMOTIONNELS (CHAPITRE 11)
+// ==========================================================
+function initEmotionalMasks() {
+  const container = document.getElementById('emotional-masks-container');
+  if (!container || !MARS_VENUS_DATA.emotionalMasks16) return;
+
+  const { menMasks, womenMasks } = MARS_VENUS_DATA.emotionalMasks16;
+
+  container.innerHTML = `
+    <!-- Masques Hommes -->
+    <div class="p-5 rounded-2xl bg-orange-50/60 border border-orange-200 space-y-3">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl">♂</span>
+        <h4 class="font-bold text-orange-950 text-sm sm:text-base font-serif-title">Les 8 Masques Défensifs de l'Homme</h4>
+      </div>
+      <div class="space-y-2">
+        ${menMasks.map(m => `
+          <div class="p-2.5 rounded-xl bg-white border border-orange-100 text-xs">
+            <strong class="text-orange-800 block">${m.id}. ${m.mask}</strong>
+            <span class="text-slate-600">Cache : ${m.hiddenEmotion}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+
+    <!-- Masques Femmes -->
+    <div class="p-5 rounded-2xl bg-pink-50/60 border border-pink-200 space-y-3">
+      <div class="flex items-center gap-2 mb-2">
+        <span class="text-xl">♀</span>
+        <h4 class="font-bold text-pink-950 text-sm sm:text-base font-serif-title">Les 8 Masques Défensifs de la Femme</h4>
+      </div>
+      <div class="space-y-2">
+        ${womenMasks.map(m => `
+          <div class="p-2.5 rounded-xl bg-white border border-pink-100 text-xs">
+            <strong class="text-pink-800 block">${m.id}. ${m.mask}</strong>
+            <span class="text-slate-600">Cache : ${m.hiddenEmotion}</span>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+}
+
+// ==========================================================
+// 17. ANATOMIE DES 7 DISPUTES TYPES & RAISONS PROFONDES (CH. 9)
+// ==========================================================
+function initDisputesAnalysis() {
+  const disputesContainer = document.getElementById('disputes-analysis-container');
+  const reasonsContainer = document.getElementById('dispute-reasons-container');
+
+  if (disputesContainer && MARS_VENUS_DATA.disputesAnalysis7) {
+    disputesContainer.innerHTML = MARS_VENUS_DATA.disputesAnalysis7.map((disp, idx) => `
+      <div class="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-xs">
+        <button type="button" class="dispute-toggle-btn w-full p-4 text-left font-bold text-xs sm:text-sm text-slate-800 hover:bg-slate-50 flex items-center justify-between transition-smooth" data-target="disp-body-${idx}">
+          <span class="flex items-center gap-2">
+            <span class="w-6 h-6 rounded-full bg-red-100 text-red-700 flex items-center justify-center text-xs font-bold">${idx + 1}</span>
+            <span>${disp.title}</span>
+          </span>
+          <span class="text-slate-400 text-xs">▼</span>
+        </button>
+
+        <div id="disp-body-${idx}" class="dispute-body hidden p-4 sm:p-5 pt-0 border-t border-slate-100 space-y-3 text-xs">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+            <div class="p-3 rounded-xl bg-rose-50/70 border border-rose-200">
+              <strong class="text-rose-800 block mb-1">1. Question posée par la femme :</strong>
+              <p class="text-slate-700 italic">${disp.questionFemme}</p>
+            </div>
+            <div class="p-3 rounded-xl bg-orange-50/70 border border-orange-200">
+              <strong class="text-orange-800 block mb-1">2. Message perçu par l'homme :</strong>
+              <p class="text-slate-700 italic">${disp.messageHomme}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="p-3 rounded-xl bg-slate-50 border border-slate-200">
+              <strong class="text-slate-800 block mb-1">3. L'explication logique qu'il donne :</strong>
+              <p class="text-slate-600 italic">${disp.explicationHomme}</p>
+            </div>
+            <div class="p-3 rounded-xl bg-pink-50/70 border border-pink-200">
+              <strong class="text-pink-800 block mb-1">4. Message perçu par la femme :</strong>
+              <p class="text-slate-700 italic">${disp.messageFemme}</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-slate-100">
+            <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200 text-emerald-950 font-medium">
+              <strong class="text-emerald-800 block mb-1">✨ Clé pour Elle (Atténuer sa désapprobation) :</strong>
+              <p>${disp.actionFemme}</p>
+            </div>
+            <div class="p-3 rounded-xl bg-blue-50 border border-blue-200 text-blue-950 font-medium">
+              <strong class="text-blue-800 block mb-1">🛡️ Clé pour Lui (Affirmer le respect de ses émotions) :</strong>
+              <p>${disp.actionHomme}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `).join('');
+
+    disputesContainer.querySelectorAll('.dispute-toggle-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const body = document.getElementById(targetId);
+        if (!body) return;
+        const isHidden = body.classList.contains('hidden');
+        disputesContainer.querySelectorAll('.dispute-body').forEach(b => b.classList.add('hidden'));
+        if (isHidden) body.classList.remove('hidden');
+      });
+    });
+  }
+
+  if (reasonsContainer && MARS_VENUS_DATA.disputeMotivations) {
+    const { menReasons8, womenReasons8 } = MARS_VENUS_DATA.disputeMotivations;
+    reasonsContainer.innerHTML = `
+      <div class="p-5 rounded-2xl bg-orange-50/60 border border-orange-200 space-y-3">
+        <h4 class="font-bold text-orange-950 text-xs sm:text-sm font-serif-title">♂ 8 Raisons pour lesquelles l'homme se dispute</h4>
+        <div class="space-y-2">
+          ${menReasons8.map(r => `
+            <div class="p-2.5 rounded-xl bg-white border border-orange-100 text-xs">
+              <p class="font-bold text-slate-800 mb-1">${r.deepReason}</p>
+              <p class="text-emerald-700 font-semibold">➡️ Ce dont il a besoin : ${r.need}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-pink-50/60 border border-pink-200 space-y-3">
+        <h4 class="font-bold text-pink-950 text-xs sm:text-sm font-serif-title">♀ 8 Raisons pour lesquelles la femme se dispute</h4>
+        <div class="space-y-2">
+          ${womenReasons8.map(r => `
+            <div class="p-2.5 rounded-xl bg-white border border-pink-100 text-xs">
+              <p class="font-bold text-slate-800 mb-1">${r.deepReason}</p>
+              <p class="text-rose-700 font-semibold">➡️ Ce dont elle a besoin : ${r.need}</p>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `;
+  }
+}
+
+// ==========================================================
+// 18. BAROMÈTRE DES 90/10 & LES 18 QUESTIONS D'ENFANCE (CH. 13)
+// ==========================================================
+function initNinetyTen() {
+  const triggersContainer = document.getElementById('past-triggers-container');
+  const questionsContainer = document.getElementById('childhood-questions-container');
+  const countSpan = document.getElementById('childhood-checked-count');
+
+  if (triggersContainer && MARS_VENUS_DATA.ninetyTenPrinciple) {
+    triggersContainer.innerHTML = MARS_VENUS_DATA.ninetyTenPrinciple.pastTriggers12.map(item => `
+      <div class="p-3.5 rounded-xl bg-white border border-slate-200 shadow-2xs text-xs flex flex-col justify-between">
+        <div>
+          <span class="text-[10px] font-bold text-rose-600 block mb-1">Déclencheur #${item.id}</span>
+          <p class="font-semibold text-slate-800 mb-2">${item.trigger}</p>
+        </div>
+        <p class="text-[11px] text-slate-500 italic p-2 rounded-lg bg-slate-50 border border-slate-100">
+          🔍 <strong>Origine 90% :</strong> ${item.meaning}
+        </p>
+      </div>
+    `).join('');
+  }
+
+  if (questionsContainer && MARS_VENUS_DATA.ninetyTenPrinciple) {
+    const saved = JSON.parse(localStorage.getItem('childhood_questions_checked') || '{}');
+
+    function updateCount() {
+      const total = Object.values(saved).filter(Boolean).length;
+      if (countSpan) countSpan.textContent = total;
+    }
+
+    questionsContainer.innerHTML = MARS_VENUS_DATA.ninetyTenPrinciple.childhoodQuestions18.map((q, idx) => {
+      const isChecked = !!saved[idx];
+      return `
+        <div class="p-3 rounded-xl bg-white border ${isChecked ? 'border-emerald-300 bg-emerald-50/20' : 'border-slate-200'} shadow-2xs text-xs flex items-start gap-2.5">
+          <input type="checkbox" id="child-chk-${idx}" data-idx="${idx}" ${isChecked ? 'checked' : ''} class="childhood-chk mt-1 w-3.5 h-3.5 rounded text-emerald-600 focus:ring-emerald-500 cursor-pointer">
+          <label for="child-chk-${idx}" class="cursor-pointer text-slate-700 leading-relaxed font-medium">
+            ${q}
+          </label>
+        </div>
+      `;
+    }).join('');
+
+    questionsContainer.querySelectorAll('.childhood-chk').forEach(chk => {
+      chk.addEventListener('change', () => {
+        const idx = chk.dataset.idx;
+        saved[idx] = chk.checked;
+        localStorage.setItem('childhood_questions_checked', JSON.stringify(saved));
+        updateCount();
+      });
+    });
+
+    updateCount();
+  }
 }
